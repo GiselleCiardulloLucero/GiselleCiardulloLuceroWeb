@@ -1,0 +1,402 @@
+/* =========================================================
+   ESTILOS DEL SITIO
+========================================================= */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;background:#d4cfc7;}
+
+.bg{
+  position:fixed;inset:0;
+  background:var(--bgimg) center center / cover no-repeat;
+  z-index:0;
+  transform:scale(1.05);
+  transition:transform 3.2s cubic-bezier(.22,.68,0,1.1);
+}
+.bg.settle{transform:scale(1.0);}
+
+canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
+
+.name{
+  position:fixed;
+  top:clamp(1.2rem,3vh,2rem);
+  left:clamp(1.2rem,3vw,2.2rem);
+  z-index:30;
+  font-family:'Fraunces',serif;
+  font-weight:700 !important;
+  font-size:clamp(.8rem,1.4vw,1.05rem);
+  letter-spacing:.16em;
+  color:#1a1714;
+  border:1px solid #1a1714;
+  padding:.55em 1.2em;
+  background:#ffffff;
+  display:inline-block;
+  white-space:nowrap;
+}
+
+/* INDEX SCREEN */
+.index-screen{
+  position:fixed;inset:0;
+  z-index:20;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 1.8s ease;
+  background: rgba(242,236,225,0);
+  padding-left:clamp(7rem, 20vw, 12rem); /* Reducido para centrar mejor */
+  box-sizing:border-box;
+}
+.index-screen.show{
+  opacity:1;pointer-events:auto;
+  background: rgba(242,236,225,0);
+}
+
+/* ---- MODIFICADO: los bloques se apilan verticalmente ---- */
+.index-layout{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(3rem, 8vw, 7rem);
+  padding: 2.5rem;
+  max-width:100%;
+  position: relative;   /* ← NUEVO: necesario para el pseudo-elemento */
+  /* quitamos background, border-radius y box-shadow si no los quieres */
+  border-radius: 0px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* si lo quieres, déjalo */
+}
+
+/* Fondo blanco traslúcido que ocupa todo el ancho de la pantalla */
+.index-layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;           /* ancho total de la ventana */
+  height: 100%;
+  background: rgba(245, 235, 220, 0); /* el color y transparencia que quieras */
+  transform: translateX(-50%);
+  z-index: -1;            /* queda detrás de los botones */
+  pointer-events: none;   /* no interfiere con clics */
+  border-radius: 0px;     /* si quieres que sea recto, pon 0 */
+}
+/* Grupo P + Sketchbook P (arriba) */
+.group-p{
+  display:flex;
+  align-items:center;
+  gap:0;
+  flex-shrink:0;
+}
+.btn-p{
+  white-space:nowrap;
+  font-weight:400!important;
+}
+ .group-p .nav-btn {
+  font-weight:500;
+  font-family:'Fraunces',serif;
+  border-color: #c0392b;
+}
+
+/* Línea entre P y Sketchbook P */
+.connector {
+  width: clamp(2rem,5vw,4rem);
+  height: 4px;             /* ligeramente más gruesa para que se vea mejor */
+  background: #c0392b;     /* mismo color que el borde */
+  flex-shrink: 0;
+}
+
+/* Grupo del resto de galerías (abajo) */
+.group-others{
+  display:flex;
+  flex-direction:column;
+  align-items: flex-start;    /* Centra los botones dentro del grupo */
+  gap:clamp(1rem,2.5vh,1.8rem);
+}
+
+/* All buttons share this style */
+.nav-btn{
+  font-family:'Fraunces',serif;
+  font-weight:400;
+  font-size:clamp(.8rem,1.4vw,1.05rem);
+  letter-spacing:.0.05em;
+  color:#1a1714;
+  text-decoration:none;
+  border:1px solid #1a1714;
+  padding:.55em 1.2em;
+  background:#fff;
+  display:inline-block;
+  white-space:nowrap;
+  transition: background .2s ease, color .2s ease;
+  cursor:pointer;
+}
+.nav-btn:hover{
+  background:#1a1714;
+  color:#f2ece1;
+}
+
+/* Name label top-left stays (ya definido arriba, pero se repite) – lo dejamos igual */
+.name{
+  position:fixed;
+  top:clamp(1.2rem,3vh,2rem);
+  left:clamp(1.2rem,3vw,2.2rem);
+  z-index:30;
+  font-family:'Fraunces',serif;
+  font-weight:300;
+  font-size:clamp(.68rem,1.1vw,.85rem);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#1a1714;
+  opacity:0;
+  transition:opacity 1.6s ease .4s;
+}
+.name.show{opacity: 1;}
+
+/* Vertical connector line coming down from the name */
+.social-connector-v{
+  position:fixed;
+  left:clamp(1.2rem,3vw,2.2rem);
+  top:calc(clamp(1.2rem,3vh,2rem) + 2.6em);
+  width:1px;
+  height:0;
+  background:#1a1714;
+  z-index:29;
+  opacity:0;
+  transition:height 1.4s ease .8s, opacity .6s ease .8s;
+}
+.social-connector-v.show{
+  opacity:1;
+  height:calc(50vh - clamp(1.2rem,3vh,2rem) - 2.6em);
+}
+
+/* Column of social buttons, starting below center, aligned with name */
+.social-buttons{
+  position:fixed;
+  left:clamp(1.2rem,3vw,2.2rem);
+  top:50vh;
+  z-index:30;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(1rem,2.5vh,1.8rem);
+  opacity:0;
+  transform:translateY(-8px);
+  transition:opacity 1.2s ease 1.6s, transform 1.2s ease 1.6s;
+}
+.social-buttons.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Illustration row: button + horizontal connector + extra link */
+.row-ilustracion{
+  display:flex;
+  align-items:center;
+  gap:0;
+}
+.row-ilustracion .nav-btn {
+  border-color: #c0392b;
+}
+.ilustracion-connector {
+  width: clamp(2rem,5vw,4rem);
+  height: 3px;
+  background: #c0392b;
+  flex-shrink: 0;
+}
+.btn-video{
+  white-space:nowrap;
+}
+
+/* ===== SELECTOR DE IDIOMA ===== */       ← AQUÍ
+#google_translate_element {
+  position: fixed;
+  top: clamp(1.2rem, 3vh, 2rem);
+  right: clamp(1.2rem, 3vw, 2.2rem);
+  z-index: 100;
+  background: #ffffff;
+  border: 1px solid #1a1714;
+  padding: 0.3em 0.6em;
+  font-family: 'Fraunces', serif;
+  font-size: 0.8rem;
+}
+.goog-te-banner-frame { display: none !important; }
+body { top: 0 !important; }
+.goog-logo-link { display: none !important; }
+.goog-te-gadget { color: transparent !important; font-size: 0 !important; }
+.goog-te-gadget .goog-te-combo {
+  color: #1a1714 !important;
+  font-family: 'Fraunces', serif !important;
+  font-size: 0.8rem !important;
+  border: none !important;
+  background: transparent !important;
+  padding: 0.2em 0 !important;
+  cursor: pointer;
+} 
+/* ===== TÍTULO "PROYECTO" + VÍDEO EMERGENTE ===== */
+.proyecto-title-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.proyecto-title {
+  font-family: 'Fraunces', serif;
+  font-weight:700;
+  font-size: clamp(.8rem, 1.4vw, 1.05rem);
+  letter-spacing: .16em;
+  color: #c0392b;
+  border: 1px solid #c0392b;
+  padding: .55em 1.2em;
+  background: #ffffff;
+  display: inline-block;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.proyecto-title:hover {
+  background: #c0392b;
+  color: #ffffff;
+}
+
+/* Ventana emergente con el vídeo */
+.proyecto-video {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.8rem;
+  width: 360px;
+  height: 202px;   /* proporción 16:9 */
+  background: #000;
+  border: 2px solid #c0392b;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  z-index: 100;
+}
+.proyecto-title-wrap:hover .proyecto-video {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.proyecto-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* =========================================================
+   RESPONSIVE: MÓVIL (hasta 768px)
+========================================================= */
+@media (max-width: 768px) {
+  html, body {
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .index-screen {
+    padding: 0 1rem;
+    align-items: flex-start;    /* para que el contenido empiece desde arriba */
+    padding-top: 8rem;          /* AUMENTADO: más espacio para el nombre fijo */
+    background: rgba(242, 236, 225, 0.95);
+  }
+
+  .index-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8rem;                 /* AUMENTADO: más separación entre los dos bloques */
+    padding: 1rem 0;
+    width: 100%;
+  }
+
+  .name {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    top: 0.8rem;
+    left: 0.8rem;
+    z-index: 50;
+    white-space: nowrap;
+  }
+
+  .group-p {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .connector {
+    width: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .group-others {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .nav-btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .row-ilustracion {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .ilustracion-connector {
+    width: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Redes sociales: ahora con más margen superior para separarlas */
+  .social-buttons {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.8rem !important;
+    margin-top: 3.5rem !important;   /* AUMENTADO: más separación del bloque anterior */
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    width: 100%;
+    order: 10;
+  }
+
+  .social-connector-v {
+    display: none !important;
+  }
+
+  .bg, canvas {
+    pointer-events: none;
+  }
+
+  .name {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 4px;
+  }
+
+  .nav-btn {
+    max-width: 90vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+ .proyecto-video {
+    width: 260px;
+    height: 146px;
+  }
+} 
