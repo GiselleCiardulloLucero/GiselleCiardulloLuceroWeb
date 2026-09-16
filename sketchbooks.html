@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sketchbooks - Giselle Ciardullo Lucero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET Y ESTILOS GENERALES ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      background: #f7f4ed;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    /* ===== ENCABEZADO ===== */
+    .header {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .header h1 {
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      letter-spacing: 0.1em;
+      font-weight: 300;
+      color: #1a1714;
+      background: #ffffff;
+      border: 1px solid #1a1714;
+      padding: 0.4em 1em;
+      display: inline-block;
+    }
+    .back-link {
+      color: #1a1714;
+      text-decoration: none;
+      border: 1px solid #1a1714;
+      padding: 0.4em 1em;
+      font-size: clamp(0.7rem, 1vw, 0.9rem);
+      background: #ffffff;
+      transition: background 0.2s, color 0.2s;
+    }
+    .back-link:hover {
+      background: #1a1714;
+      color: #f2ece1;
+    }
+
+    /* ===== BARRA DE NAVEGACIÓN ENTRE GALERÍAS ===== */
+    .gallery-nav {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+      padding: 0.8rem 1rem;
+      background: rgba(255, 255, 255, 0.55);
+      border-radius: 8px;
+    }
+    .nav-btn {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: clamp(0.7rem, 1vw, 0.85rem);
+      letter-spacing: 0.05em;
+      color: #1a1714;
+      text-decoration: none;
+      border: 1px solid #1a1714;
+      padding: 0.4em 1em;
+      background: #ffffff;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .nav-btn:hover {
+      background: #1a1714;
+      color: #f2ece1;
+    }
+    .nav-btn.accent {
+      border-color: #c0392b;
+      color: #c0392b;
+    }
+    .nav-btn.accent:hover {
+      background: #c0392b;
+      color: #ffffff;
+      border-color: #c0392b;
+    }
+    .nav-btn.active {
+      background: #1a1714;
+      color: #f2ece1;
+      border-color: #1a1714;
+    }
+    .nav-connector {
+      display: inline-block;
+      width: 1.2rem;
+      height: 1px;
+      background: #c0392b;
+    }
+    .nav-divider {
+      display: inline-block;
+      width: 1px;
+      height: 1.6rem;
+      background: #1a1714;
+      opacity: 0.3;
+      margin: 0 0.5rem;
+    }
+
+    /* ===== GALERÍA (GRID) ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .gallery-item {
+      background: #ffffff;
+      border: 1px solid #e0dbd2;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+
+      /* MEJORA DE RENDIMIENTO */
+      content-visibility: auto;
+      contain-intrinsic-size: 200px 200px;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #f5f3ef;
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 23, 20, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 2rem;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border: 2px solid #f2ece1;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2.5rem;
+      color: #f2ece1;
+      cursor: pointer;
+      font-family: sans-serif;
+      line-height: 1;
+      transition: transform 0.2s;
+    }
+    .lightbox-close:hover {
+      transform: scale(1.2);
+    }
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: #f2ece1;
+      cursor: pointer;
+      font-family: sans-serif;
+      line-height: 1;
+      user-select: none;
+      transition: transform 0.2s, opacity 0.2s;
+      padding: 0 1rem;
+      z-index: 1000;
+    }
+    .lightbox-prev {
+      left: 1rem;
+    }
+    .lightbox-next {
+      right: 1rem;
+    }
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      transform: translateY(-50%) scale(1.2);
+      opacity: 0.8;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+      }
+      .gallery-nav {
+        gap: 0.4rem;
+        padding: 0.6rem 0.5rem;
+      }
+      .nav-connector {
+        width: 0.8rem;
+      }
+      .nav-divider {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Sketchbooks</h1>
+    <a href="index.html" class="back-link">← Volver</a>
+  </header>
+
+  <!-- ===== BARRA DE NAVEGACIÓN ENTRE GALERÍAS ===== -->
+  <nav class="gallery-nav">
+    <!-- Grupo Proyecto P (acento rojo) -->
+    <a href="p.html" class="nav-btn accent">Proyecto P</a>
+    <span class="nav-connector"></span>
+    <a href="sketchbook-p.html" class="nav-btn accent">Sketchbook P</a>
+    <span class="nav-connector"></span>
+    <a href="texto.html" class="nav-btn accent">Texto</a>
+
+    <span class="nav-divider"></span>
+
+    <!-- Resto de galerías -->
+    <a href="obra2.html" class="nav-btn">Obra2</a>
+    <a href="ilustracion.html" class="nav-btn">Ilustración</a>
+    <a href="sketchbooks.html" class="nav-btn active">Sketchbooks</a>
+  </nav>
+
+  <div class="gallery" id="gallery">
+    <!-- ====== IMÁGENES ====== -->
+    <div class="gallery-item"><img src="imagenes/cuaderno2-01.jpg" alt="Sketchbook2 - 01" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno2-02.jpg" alt="Sketchbook2 - 02" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno2-03.jpg" alt="Sketchbook2 - 03" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno2-04.jpg" alt="Sketchbook2 - 04" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno2-05.jpg" alt="Sketchbook2 - 05" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno2-06.jpg" alt="Sketchbook2 - 06" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno2-07.jpg" alt="Sketchbook2 - 07" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno2-08.jpg" alt="Sketchbook2 - 08" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-01.jpg" alt="Sketchbook3 - 01" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-02.jpg" alt="Sketchbook3 - 02" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-03.jpg" alt="Sketchbook3 - 03" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-04.jpg" alt="Sketchbook3 - 04" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-05.jpg" alt="Sketchbook3 - 05" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-06.jpg" alt="Sketchbook3 - 06" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-07.jpg" alt="Sketchbook3 - 07" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-08.jpg" alt="Sketchbook3 - 08" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-09.jpg" alt="Sketchbook3 - 09" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-10.jpg" alt="Sketchbook3 - 10" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-11.jpg" alt="Sketchbook3 - 11" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-12.jpg" alt="Sketchbook3 - 12" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-13.jpg" alt="Sketchbook3 - 13" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-14.jpg" alt="Sketchbook3 - 14" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-15.jpg" alt="Sketchbook3 - 15" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-16.jpg" alt="Sketchbook3 - 16" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-17.jpg" alt="Sketchbook3 - 17" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-18.jpg" alt="Sketchbook3 - 18" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-19.jpg" alt="Sketchbook3 - 19" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-20.jpg" alt="Sketchbook3 - 20" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-21.jpg" alt="Sketchbook3 - 21" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-22.jpg" alt="Sketchbook3 - 22" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-23.jpg" alt="Sketchbook3 - 23" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-24.jpg" alt="Sketchbook3 - 24" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-25.jpg" alt="Sketchbook3 - 25" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-26.jpg" alt="Sketchbook3 - 26" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-27.jpg" alt="Sketchbook3 - 27" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno3-28.jpg" alt="Sketchbook3 - 28" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-01.jpg" alt="Sketchbook4 - 01" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-02.jpg" alt="Sketchbook4 - 02" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-03.jpg" alt="Sketchbook4 - 03" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-04.jpg" alt="Sketchbook4 - 04" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-05.jpg" alt="Sketchbook4 - 05" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-06.jpg" alt="Sketchbook4 - 06" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-07.jpg" alt="Sketchbook4 - 07" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-08.jpg" alt="Sketchbook4 - 08" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-09.jpg" alt="Sketchbook4 - 09" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-10.jpg" alt="Sketchbook4 - 10" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-11.jpg" alt="Sketchbook4 - 11" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-12.jpg" alt="Sketchbook4 - 12" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-13.jpg" alt="Sketchbook4 - 13" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-14.jpg" alt="Sketchbook4 - 14" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-15.jpg" alt="Sketchbook4 - 15" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-16.jpg" alt="Sketchbook4 - 16" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-17.jpg" alt="Sketchbook4 - 17" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-18.jpg" alt="Sketchbook4 - 18" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-19.jpg" alt="Sketchbook4 - 19" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-20.jpg" alt="Sketchbook4 - 20" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-21.jpg" alt="Sketchbook4 - 21" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-22.jpg" alt="Sketchbook4 - 22" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-23.jpg" alt="Sketchbook4 - 23" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-24.jpg" alt="Sketchbook4 - 24" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-25.jpg" alt="Sketchbook4 - 25" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-26.jpg" alt="Sketchbook4 - 26" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-27.jpg" alt="Sketchbook4 - 27" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-28.jpg" alt="Sketchbook4 - 28" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-29.jpg" alt="Sketchbook4 - 29" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-30.jpg" alt="Sketchbook4 - 30" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-31.jpg" alt="Sketchbook4 - 31" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-32.jpg" alt="Sketchbook4 - 32" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="imagenes/cuaderno4-33.jpg" alt="Sketchbook4 - 33" loading="lazy" decoding="async" /></div>
+  </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+    <img id="lightboxImg" src="" alt="Vista ampliada" />
+    <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+  </div>
+
+  <script>
+    // ===== LIGHTBOX CON NAVEGACIÓN =====
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-item img'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+    let currentIndex = 0;
+
+    galleryItems.forEach((img, index) => {
+      img.addEventListener('click', function (e) {
+        e.stopPropagation();
+        currentIndex = index;
+        showImage(currentIndex);
+        lightbox.classList.add('active');
+      });
+    });
+
+    function showImage(index) {
+      const img = galleryItems[index];
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+    }
+
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      showImage(currentIndex);
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      showImage(currentIndex);
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === this) {
+        lightbox.classList.remove('active');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+      } else if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % galleryItems.length;
+        showImage(currentIndex);
+      } else if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        showImage(currentIndex);
+      }
+    });
+  </script>
+
+</body>
+</html>
