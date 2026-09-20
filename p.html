@@ -38,32 +38,31 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-   .header h1 {
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  letter-spacing: 0.1em;
-  font-weight: 300;
-  color: #1a1714;
-  background: #ffffff;
-  border: 1px solid #1a1714;
-  padding: 0.4em 1em;
-  display: inline-block;
-}
+    .header h1 {
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      letter-spacing: 0.1em;
+      font-weight: 300;
+      color: #1a1714;
+      background: #ffffff;
+      border: 1px solid #1a1714;
+      padding: 0.4em 1em;
+      display: inline-block;
+    }
+    .back-link {
+      color: #1a1714;
+      text-decoration: none;
+      border: 1px solid #1a1714;
+      padding: 0.4em 1em;
+      font-size: clamp(0.7rem, 1vw, 0.9rem);
+      background: #ffffff;
+      transition: background 0.2s, color 0.2s;
+    }
+    .back-link:hover {
+      background: #1a1714;
+      color: #f2ece1;
+    }
 
-.back-link {
-  color: #1a1714;
-  text-decoration: none;
-  border: 1px solid #1a1714;
-  padding: 0.4em 1em;
-  font-size: clamp(0.7rem, 1vw, 0.9rem);
-  background: #ffffff;
-  transition: background 0.2s, color 0.2s;
-}
-.back-link:hover {
-  background: #1a1714;
-  color: #f2ece1;
-}
-
-  /* ===== BARRA DE NAVEGACIÓN ENTRE GALERÍAS ===== */
+    /* ===== BARRA DE NAVEGACIÓN ENTRE GALERÍAS ===== */
     .gallery-nav {
       width: 100%;
       max-width: 1200px;
@@ -220,32 +219,7 @@
       transform: translateY(-50%) scale(1.2);
       opacity: 0.8;
     }
-      /* ===== SELECTOR DE IDIOMA ===== */
-#google_translate_element {
-  position: fixed;
-  top: clamp(1.2rem, 3vh, 2rem);
-  right: clamp(1.2rem, 3vw, 2.2rem);
-  z-index: 100;
-  background: #ffffff;
-  border: 1px solid #1a1714;
-  padding: 0.3em 0.6em;
-  font-family: 'Fraunces', serif;
-  font-size: 0.8rem;
-}
-/* Ocultar la barra fea de Google */
-.goog-te-banner-frame { display: none !important; }
-body { top: 0 !important; }
-.goog-logo-link { display: none !important; }
-.goog-te-gadget { color: transparent !important; font-size: 0 !important; }
-.goog-te-gadget .goog-te-combo {
-  color: #1a1714 !important;
-  font-family: 'Fraunces', serif !important;
-  font-size: 0.8rem !important;
-  border: none !important;
-  background: transparent !important;
-  padding: 0.2em 0 !important;
-  cursor: pointer;
-}
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
       .gallery {
@@ -271,10 +245,8 @@ body { top: 0 !important; }
     <h1>Galería P</h1>
     <a href="index.html" class="back-link">← Volver</a>
   </header>
- <!-- Selector de idioma -->
-<div id="google_translate_element"></div>
 
- <!-- ===== BARRA DE NAVEGACIÓN ENTRE GALERÍAS ===== -->
+  <!-- ===== BARRA DE NAVEGACIÓN ENTRE GALERÍAS ===== -->
   <nav class="gallery-nav">
     <!-- Grupo Proyecto P (acento rojo) -->
     <a href="p.html" class="nav-btn accent active">Proyecto P</a>
@@ -290,7 +262,6 @@ body { top: 0 !important; }
     <a href="ilustracion.html" class="nav-btn">Ilustración</a>
     <a href="sketchbooks.html" class="nav-btn">Sketchbooks</a>
   </nav>
-
 
   <div class="gallery" id="gallery">
     <!-- ====== IMÁGENES 1 a 36 (p-01.jpg hasta p-36.jpg) ====== -->
@@ -401,18 +372,6 @@ body { top: 0 !important; }
       }
     });
   </script>
-  <!-- ===== SELECTOR DE IDIOMA (Google Translate) ===== -->
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'es',
-      includedLanguages: 'en,fr',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-      autoDisplay: false
-    }, 'google_translate_element');
-  }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
