@@ -1,0 +1,15 @@
+/* Fondo exclusivo de la biografía; la ventana conserva su papel claro. */
+body.bio-page {
+  position: relative;
+  isolation: isolate;
+  background: #f5f3ee;
+}
+
+.bio-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('../imagenes/fondo-bio.jpg') center / cover no-repeat;
+}

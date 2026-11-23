@@ -3,161 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Texto - Giselle Ciardullo Lucero</title>
+<title>Texto de Proyecto P - Giselle Ciardullo Lucero</title>
+<meta name="description" content="Giselle Ciardullo Lucero presenta el origen de Proyecto P y su acercamiento, desde el dibujo y la pintura, a imágenes de mujeres de distintas épocas.">
+<meta property="og:description" content="Giselle Ciardullo Lucero presenta el origen de Proyecto P y su acercamiento, desde el dibujo y la pintura, a imágenes de mujeres de distintas épocas.">
+<meta name="twitter:description" content="Giselle Ciardullo Lucero presenta el origen de Proyecto P y su acercamiento, desde el dibujo y la pintura, a imágenes de mujeres de distintas épocas.">
+<link rel="icon" href="favicon.ico?v=1" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png?v=1">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Giselle Ciardullo Lucero">
+  <meta property="og:title" content="Texto de Proyecto P - Giselle Ciardullo Lucero">
+  <meta property="og:url" content="https://giselleciardullolucero.github.io/GiselleCiardulloLuceroWeb/texto.html">
+  <meta property="og:image" content="https://giselleciardullolucero.github.io/GiselleCiardulloLuceroWeb/imagenes/compartir-giselle-ciardullo-lucero.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Nombre Giselle Ciardullo Lucero sobre un fragmento horizontal de la obra P-05.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Texto de Proyecto P - Giselle Ciardullo Lucero">
+  <meta name="twitter:image" content="https://giselleciardullolucero.github.io/GiselleCiardulloLuceroWeb/imagenes/compartir-giselle-ciardullo-lucero.jpg">
+  <meta name="twitter:image:alt" content="Nombre Giselle Ciardullo Lucero sobre un fragmento horizontal de la obra P-05.">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet" />
-  <style>
-    /* ===== RESET Y ESTILOS GENERALES ===== */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Fraunces', serif;
-      font-weight: 300;
-      background: #f7f4ed;   /* ← MISMO FONDO QUE LAS GALERÍAS */
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
-    }
-
-    /* ===== ENCABEZADO ===== */
-    .header {
-      width: 100%;
-      max-width: 1200px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .header h1 {
-      font-size: clamp(1.2rem, 2.5vw, 2rem);
-      letter-spacing: 0.1em;
-      font-weight: 300;
-      color: #1a1714;
-      background: #ffffff;
-      border: 1px solid #1a1714;
-      padding: 0.4em 1em;
-      display: inline-block;
-    }
-    .back-link {
-      color: #1a1714;
-      text-decoration: none;
-      border: 1px solid #1a1714;
-      padding: 0.4em 1em;
-      font-size: clamp(0.7rem, 1vw, 0.9rem);
-      background: #ffffff;
-      transition: background 0.2s, color 0.2s;
-    }
-    .back-link:hover {
-      background: #1a1714;
-      color: #f2ece1;
-    }
-
-    /* ===== BARRA DE NAVEGACIÓN ENTRE GALERÍAS ===== */
-    .gallery-nav {
-      width: 100%;
-      max-width: 1200px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      margin-bottom: 2rem;
-      padding: 0.8rem 1rem;
-      background: rgba(255, 255, 255, 0.55);
-      border-radius: 8px;
-    }
-    .nav-btn {
-      font-family: 'Fraunces', serif;
-      font-weight: 300;
-      font-size: clamp(0.7rem, 1vw, 0.85rem);
-      letter-spacing: 0.05em;
-      color: #1a1714;
-      text-decoration: none;
-      border: 1px solid #1a1714;
-      padding: 0.4em 1em;
-      background: #ffffff;
-      white-space: nowrap;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .nav-btn:hover {
-      background: #1a1714;
-      color: #f2ece1;
-    }
-    .nav-btn.accent {
-      border-color: #c0392b;
-      color: #c0392b;
-    }
-    .nav-btn.accent:hover {
-      background: #c0392b;
-      color: #ffffff;
-      border-color: #c0392b;
-    }
-    .nav-btn.active {
-      background: #1a1714;
-      color: #f2ece1;
-      border-color: #1a1714;
-    }
-    .nav-connector {
-      display: inline-block;
-      width: 1.2rem;
-      height: 1px;
-      background: #c0392b;
-    }
-    .nav-divider {
-      display: inline-block;
-      width: 1px;
-      height: 1.6rem;
-      background: #1a1714;
-      opacity: 0.3;
-      margin: 0 0.5rem;
-    }
-
-    /* ===== CONTENEDOR DE TEXTO ===== */
-    .text-container {
-      background: rgba(255, 255, 255, 0.8);
-      padding: 3rem;
-      max-width: 800px;
-      width: 100%;
-      border: 1px solid #e0dbd2;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      color: #1a1714;
-    }
-    .text-container p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .text-container {
-        padding: 1.5rem;
-      }
-      .text-container p {
-        font-size: 1rem;
-      }
-      .gallery-nav {
-        gap: 0.4rem;
-        padding: 0.6rem 0.5rem;
-      }
-      .nav-connector {
-        width: 0.8rem;
-      }
-      .nav-divider {
-        display: none;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="CSS/texto.css" />
+  <link rel="alternate" hreflang="es" href="texto.html" />
+  <link rel="alternate" hreflang="en" href="texto-en.html" />
+  <link rel="alternate" hreflang="fr" href="texto-fr.html" />
 </head>
 <body>
 
@@ -178,16 +52,50 @@
     <span class="nav-divider"></span>
 
     <!-- Resto de galerías -->
-    <a href="obra2.html" class="nav-btn">Obra2</a>
+    <a href="obra2.html" class="nav-btn">Obra anterior</a>
     <a href="ilustracion.html" class="nav-btn">Ilustración</a>
     <a href="sketchbooks.html" class="nav-btn">Sketchbooks</a>
   </nav>
 
-  <div class="text-container">
-    <!-- Aquí puedes poner el contenido que quieras -->
-    <p>Este es el texto que deseas mostrar. Puedes escribir lo que quieras aquí. Por ejemplo, una descripción, un poema, un manifiesto, o cualquier contenido textual que quieras compartir.</p>
-    <p>Puedes añadir tantos párrafos como necesites.</p>
-  </div>
+  <main class="text-container">
+    <nav class="language-selector" aria-label="Idioma del texto">
+      <a class="language-link" href="texto.html" hreflang="es" lang="es" aria-current="page">Español</a>
+      <a class="language-link" href="texto-en.html" hreflang="en" lang="en">English</a>
+      <a class="language-link" href="texto-fr.html" hreflang="fr" lang="fr">Français</a>
+    </nav>
+    <article aria-labelledby="statement-title">
+      <header class="statement-heading">
+        <p class="statement-label">ARTIST STATEMENT</p>
+        <h2 id="statement-title">PROYECTO «P»</h2>
+        <p class="statement-author">Giselle Ciardullo Lucero</p>
+      </header>
+
+      <figure class="statement-epigraph">
+        <blockquote>
+          <p>«La misma energía que inspiraba a las cornejas, a los labradores, a los caballos e incluso, parecía, a las cuestas yermas y desnudas, impulsaba a revolotear a la polilla de un lado al otro de su cuadrado de vidrio de la ventana. Era inevitable observarla. Por cierto, al hacerlo se tomaba conciencia de una rara sensación de piedad hacia ella. Esa mañana las posibilidades de placer parecían tan inmensas y tan variadas que desempeñar sólo la parte de una polilla en la vida -y, por si fuera poco, la de una polilla diurna- parecía un duro destino, y el fervor del insecto por disfrutar al máximo sus magras oportunidades resultaba conmovedor».</p>
+        </blockquote>
+        <figcaption>- Virginia Woolf, <cite>La muerte de la polilla.</cite></figcaption>
+      </figure>
+
+      <div class="statement-body">
+        <p>A raíz de la búsqueda de imágenes para otro proyecto, di con fotografías y registros documentales de mujeres acusadas de «colaboración horizontal» en la Francia de la posocupación nazi. Sufrieron juicios sumarios, castigos públicos, desnudamiento parcial y el rapado forzoso de la cabeza como símbolo de deshonra; muchas de ellas eran prostitutas; otras habían mantenido relaciones a cambio de comida o un vínculo sentimental, con militares nazis.</p>
+
+        <p>En esa búsqueda fueron apareciendo fichas policiales (mugshots) de finales del siglo XIX y principios del XX, de distintas partes del mundo; archivos policiales, registros de internados de mujeres, patronatos y publicaciones de la época en prensa o antiguos registros fotográficos de personajes de la época, incluyendo exesclavas. Huellas de mujeres anónimas que traspasan la barrera del tiempo dentro de un rectángulo en el que aún parecen estar vivas; un registro institucional como único testimonio de su existencia. <strong>Con ellas nace este proyecto.</strong></p>
+
+        <p>Unidas por una misma condición: pobreza, precariedad, marginalidad. Son, en su mayoría, personas anónimas y olvidadas, restos visuales de unas vidas que han llegado hasta nosotros de manera fragmentaria; cada imagen pertenece a otro tiempo y, sin embargo, continúa actuando en el presente.</p>
+
+        <p>La historiadora y teórica literaria estadounidense Saidiya Hartman, al referirse a los archivos de la trata de esclavos, dice: <em>«El archivo es, en este caso, una sentencia de muerte, una tumba, el despliegue de un cuerpo violado, un inventario de propiedad, un tratado médico sobre la gonorrea, unas cuantas líneas sobre la vida de una puta, un asterisco en la gran narrativa de la historia. Por esto, es indudablemente imposible poder alguna vez captar [estas vidas] de nuevo por sí mismas, en la forma en la que podrían haberse desarrollado en un estado libre».</em></p>
+
+        <p>La fotografía las separa de su contexto, pero inevitablemente puede percibirse en el registro de sus rostros una condición común y un orden dentro de una estructura social.</p>
+
+        <p>No encajan en los cánones de belleza ni llevan las vestimentas de la burguesía; la sociedad las mira con desprecio, pena o indiferencia, al igual que a un insecto o una polilla. Son, en definitiva, esas mariposas nocturnas, grises, marrones y sombrías que se golpean contra el vidrio de una ventana buscando la luz.</p>
+
+        <p>Mirarlas no es una acción neutral: hay una carga subjetiva y sensible en la percepción de sus rostros. Detenerme a observar para dibujarlas y pintarlas permite subrayar el pesar de la marginalidad y su violencia, la marca del cansancio y la indiferencia histórica que pesa sobre sus cuerpos vulnerables. Dibujarlas es mirarlas en profundidad para intentar comprender qué hay detrás de aquellas que son anónimas. Retratar la violencia ejercida sobre quienes subsisten en los márgenes.</p>
+
+        <p>En esta obra no hay intención de copiar fielmente la fotografía. Busco quedarme con la expresividad, descontextualizando y otorgando a la imagen un color estridente que contraste de manera violenta con los negros y blancos del dibujo. Alejarme de la visión idealizada y piadosa de las figuras; abordarlas de la forma más descarnada posible, sin embellecerlas. En un desafío consciente, procuro distanciarme tanto de la idealización ornamental como la representación infantilizada y la caricatura de la bruja o el esperpento.</p>
+      </div>
+    </article>
+  </main>
 
 </body>
 </html>

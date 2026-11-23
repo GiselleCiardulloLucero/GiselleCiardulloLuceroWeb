@@ -1,0 +1,75 @@
+/* Fondo de vídeo y respaldo fijo de la portada. */
+.video-trial { background: #000; }
+.video-trial .bio-connector,
+.video-trial .social-connector-v { background: #fff; }
+.video-poster {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: #000 url('../imagenes/fondo-video-respaldo.jpg') center / cover no-repeat;
+}
+.video-background {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+}
+.video-background.is-visible { opacity: 1; }
+.video-background iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100vw, 177.778vh);
+  height: max(100vh, 56.25vw);
+  transform: translate(-50%, -50%);
+  border: 0;
+}
+.video-trial-tools {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 80;
+  max-width: min(22rem, calc(100% - 2rem));
+  padding: .65rem .8rem;
+  border: 1px solid #1a1714;
+  background: rgba(255, 255, 255, .94);
+  color: #1a1714;
+  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-size: .875rem;
+  line-height: 1.4;
+}
+.video-trial-tools a { color: inherit; text-underline-offset: .15em; }
+.video-trial-tools p { margin-top: .5rem; }
+.video-trial-tools button {
+  margin-top: .5rem;
+  padding: .4rem .65rem;
+  font: inherit;
+  color: #1a1714;
+  background: #fff;
+  border: 1px solid #1a1714;
+  cursor: pointer;
+}
+.video-trial-tools a:focus-visible,
+.video-trial-tools button:focus-visible {
+  outline: 2px solid #1a1714;
+  outline-offset: 3px;
+}
+@media (max-width: 1000px), (max-width: 1024px) and (max-height: 500px) {
+  .video-trial-tools {
+    position: relative;
+    inset: auto;
+    margin: 5rem 1.1rem 0;
+    max-width: none;
+  }
+  .video-trial .index-screen,
+  .video-trial .index-screen.show {
+    background: transparent;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .video-background { transition: none; }
+}

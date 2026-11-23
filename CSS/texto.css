@@ -1,0 +1,270 @@
+
+/* ===== RESET Y ESTILOS GENERALES ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  background-color: #eee8db;
+  background-image:
+    radial-gradient(ellipse at 35% 10%, rgba(255, 253, 246, 0.55), transparent 75%),
+    url('../imagenes/papel-fondo-rugoso.svg');
+  background-size: 100% 100%, 320px 320px;
+  background-repeat: no-repeat, repeat;
+  background-blend-mode: normal, multiply;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+/* ===== ENCABEZADO ===== */
+.header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.header h1 {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  letter-spacing: 0.1em;
+  font-weight: 300;
+  color: #1a1714;
+  background: #ffffff;
+  border: 1px solid #1a1714;
+  padding: 0.4em 1em;
+  display: inline-block;
+}
+.back-link {
+  color: #1a1714;
+  text-decoration: none;
+  border: 1px solid #1a1714;
+  padding: 0.4em 1em;
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  background: #ffffff;
+  transition: background 0.2s, color 0.2s;
+}
+.back-link:hover {
+  background: #1a1714;
+  color: #f2ece1;
+}
+
+/* ===== BARRA DE NAVEGACIÓN ENTRE GALERÍAS ===== */
+.gallery-nav {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 8px;
+}
+.nav-btn {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  letter-spacing: 0.05em;
+  color: #1a1714;
+  text-decoration: none;
+  border: 1px solid #1a1714;
+  padding: 0.4em 1em;
+  background: #ffffff;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.nav-btn:hover {
+  background: #1a1714;
+  color: #f2ece1;
+}
+.nav-btn.accent {
+  border-color: #c0392b;
+  color: #c0392b;
+}
+.nav-btn.accent:hover {
+  background: #c0392b;
+  color: #ffffff;
+  border-color: #c0392b;
+}
+.nav-btn.active {
+  background: #1a1714;
+  color: #f2ece1;
+  border-color: #1a1714;
+}
+.nav-connector {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1px;
+  background: #c0392b;
+}
+.nav-divider {
+  display: inline-block;
+  width: 1px;
+  height: 1.6rem;
+  background: #1a1714;
+  opacity: 0.3;
+  margin: 0 0.5rem;
+}
+
+/* ===== CONTENEDOR DE TEXTO ===== */
+.text-container {
+  font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  background-color: #faf5e9;
+  background-image:
+    radial-gradient(ellipse at 15% 20%, rgba(255, 255, 255, 0.35), transparent 65%),
+    radial-gradient(ellipse at 90% 80%, rgba(172, 140, 94, 0.06), transparent 65%),
+    url('../imagenes/papel-textura.svg');
+  background-size: 100% 100%, 100% 100%, 200px 200px;
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-blend-mode: normal, normal, multiply;
+  padding: 3rem;
+  max-width: 48rem;
+  width: 100%;
+  border: 1px solid #e0dbd2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  color: #1a1714;
+}
+.text-container p {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+.statement-heading {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.statement-heading .statement-label {
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+.statement-heading h2 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+.statement-heading .statement-author {
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0.75rem 0 0;
+}
+.statement-epigraph {
+  max-width: 30rem;
+  margin: 0 0 3rem auto;
+}
+.statement-epigraph blockquote p {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+.statement-epigraph figcaption {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: right;
+}
+.text-container strong {
+  font-weight: 700;
+}
+.statement-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .text-container {
+    padding: 1.5rem;
+  }
+  .text-container p {
+    font-size: 1.15rem;
+  }
+  .statement-epigraph blockquote p {
+    font-size: 1.05rem;
+  }
+  .statement-heading,
+  .statement-epigraph {
+    margin-bottom: 2rem;
+  }
+  .gallery-nav {
+    gap: 0.4rem;
+    padding: 0.6rem 0.5rem;
+  }
+  .nav-connector {
+    width: 0.8rem;
+  }
+  .nav-divider {
+    display: none;
+  }
+}
+  
+/* Selector de idiomas: enlaces nativos, también disponibles sin JavaScript. */
+.language-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+.language-link {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-decoration: none;
+  color: #960018;
+  border: 1px solid #960018;
+  padding: 0.4rem 0.85rem;
+  background: rgba(255, 255, 255, 0.45);
+}
+.language-link:hover,
+.language-link[aria-current="page"] {
+  background: #960018;
+  color: #fff;
+}
+.language-link:focus-visible {
+  outline: 3px solid #960018;
+  outline-offset: 3px;
+}
+.text-container .translation-note,
+.text-container .quotation-source {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #625a53;
+}
+.text-container .translation-note {
+  margin: -1.5rem 0 2.5rem;
+  text-align: center;
+}
+.text-container .quotation-source {
+  margin: -0.5rem 0 1.5rem;
+}
+.bio-project-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.bio-project-link:hover {
+  text-decoration-thickness: 2px;
+}
+.bio-project-link:focus-visible {
+  outline: 2px solid #1a1714;
+  outline-offset: 3px;
+}
+

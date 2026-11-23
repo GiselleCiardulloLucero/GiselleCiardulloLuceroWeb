@@ -4,42 +4,88 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giselle Ciardullo Lucero</title>
+<link rel="icon" href="favicon.ico?v=1" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png?v=1">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Giselle Ciardullo Lucero">
+<meta property="og:title" content="Giselle Ciardullo Lucero">
+<meta property="og:url" content="https://giselleciardullolucero.github.io/GiselleCiardulloLuceroWeb/index.html">
+<meta property="og:image" content="https://giselleciardullolucero.github.io/GiselleCiardulloLuceroWeb/imagenes/compartir-giselle-ciardullo-lucero.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nombre Giselle Ciardullo Lucero sobre un fragmento horizontal de la obra P-05.">
+<meta property="og:description" content="Giselle Ciardullo Lucero, artista.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Giselle Ciardullo Lucero">
+<meta name="twitter:image" content="https://giselleciardullolucero.github.io/GiselleCiardulloLuceroWeb/imagenes/compartir-giselle-ciardullo-lucero.jpg">
+<meta name="twitter:image:alt" content="Nombre Giselle Ciardullo Lucero sobre un fragmento horizontal de la obra P-05.">
+<meta name="twitter:description" content="Giselle Ciardullo Lucero, artista.">
+<meta name="description" content="Giselle Ciardullo Lucero, artista.">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="CSS/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="CSS/style.css?v=10">
+<link rel="stylesheet" href="CSS/video-prueba.css?v=10">
+<link rel="preload" as="image" href="imagenes/fondo-video-respaldo.jpg">
+<script src="video-prueba.js?v=7" defer></script>
 </head>
-<body>
-<div class="bg" id="bg"></div>
-<canvas id="c"></canvas>
-<p class="name" id="name">Giselle Ciardullo Lucero</p>
+<body class="video-trial">
+<div class="video-poster" aria-hidden="true" hidden></div>
+<div class="video-background" id="video-background" aria-hidden="true"></div>
+<header class="site-header">
+  <h1 class="name" id="name">Giselle Ciardullo Lucero</h1>
+  <span class="bio-connector" aria-hidden="true"></span>
+  <a class="bio-link" href="bio.html" aria-label="Biografía de Giselle Ciardullo Lucero">Bio</a>
+</header>
 
 <!-- Vertical line from the name down to the social buttons -->
 <div class="social-connector-v" id="social-connector-v"></div>
 
 <!-- Social media buttons, stacked, starting below center -->
-<div class="social-buttons" id="social-buttons">
+<nav class="social-buttons" id="social-buttons" aria-label="Enlaces y contacto">
   <a class="nav-btn" href="https://www.instagram.com/giselleciardullo/" target="_blank" rel="noopener">Instagram</a>
-  <a class="nav-btn" href="https://www.youtube.com/@GiselleCiardulloL/videos" target="_blank" rel="noopener">Youtube</a>
+  <a class="nav-btn" href="https://www.youtube.com/@GiselleCiardulloL/videos" target="_blank" rel="noopener">YouTube</a>
   <a class="nav-btn" href="https://www.behance.net/giselleamab186" target="_blank" rel="noopener">Behance</a>
   <a class="nav-btn" href="contacto.html">Contacto</a>
-</div>
+</nav>
 
-<div class="index-screen" id="index-screen">
+<section class="project-preview" id="project-preview" aria-label="Selección de obras de Proyecto P">
+  <a class="project-preview-link" href="p.html" aria-label="Abrir la galería completa de Proyecto P">
+    <img id="project-preview-image" src="imagenes/p-06.jpg" alt="Obra seleccionada de Proyecto P, 1 de 5">
+  </a>
+  <button class="project-preview-button project-preview-prev" id="project-preview-prev" type="button" aria-label="Obra anterior">&#10094;</button>
+  <button class="project-preview-button project-preview-next" id="project-preview-next" type="button" aria-label="Obra siguiente">&#10095;</button>
+</section>
+
+<svg class="project-preview-connector" id="project-preview-connector" aria-hidden="true" focusable="false">
+  <path id="project-preview-connector-path"></path>
+</svg>
+
+<aside class="video-trial-tools" aria-label="Controles de la prueba de vídeo" hidden>
+  <a href="index.html">Ver portada actual</a>
+  <p id="video-trial-status" role="status">Cargando prueba de fondo de vídeo…</p>
+  <button id="video-trial-start" type="button" hidden>Reproducir fondo</button>
+  <a id="video-trial-local" href="https://giselleciardullolucero.github.io/GiselleCiardulloLuceroWeb/index.html" hidden>Abrir la web publicada</a>
+</aside>
+
+<main class="index-screen" id="index-screen">
   <div class="index-layout">
 
    <!-- Left: Proyecto — P → Sketchbook P → Texto -->
     <div class="group-p">
       <!-- Título "Proyecto" con vídeo emergente -->
-      <div class="proyecto-title-wrap">
-        <span class="proyecto-title">Proyecto</span>
+      <div class="proyecto-title-wrap" tabindex="0" aria-describedby="proyecto-video-help">
+        <span class="proyecto-title">Proyecto P</span>
+        <span class="sr-only" id="proyecto-video-help">Vista previa de vídeo al pasar el cursor o al recibir el foco.</span>
         <div class="proyecto-video" id="proyectoVideo"></div>
       </div>
 
       <div class="connector"></div>
-      <a class="nav-btn btn-p" href="p.html">P</a>
+      <a class="nav-btn btn-p" href="p.html">Galería</a>
 
       <div class="connector"></div>
       <a class="nav-btn" href="sketchbook-p.html">Sketchbook P</a>
@@ -50,21 +96,20 @@
 
    <!-- Right: 3 independent in column -->
     <div class="group-others">
-      <a class="nav-btn" href="obra2.html">Obra2</a>
-
       <div class="row-ilustracion">
         <a class="nav-btn" href="ilustracion.html">Ilustración</a>
         <div class="ilustracion-connector"></div>
-        <a class="nav-btn btn-video" href="https://youtu.be/1vN2xd69WVY?si=h2ImT3Z01zpGPhif" target="_blank" rel="noopener">aplastamiento de las gotas</a>
+        <a class="nav-btn btn-video" href="https://youtu.be/1vN2xd69WVY?si=h2ImT3Z01zpGPhif" target="_blank" rel="noopener">Aplastamiento de las gotas</a>
       </div>
 
       <a class="nav-btn" href="sketchbooks.html">Sketchbooks</a>
+      <a class="nav-btn" href="obra2.html">Obra anterior</a>
     </div>
 
   </div>
-</div>
+</main>
 
-<script src="script.js"></script>
+<script src="script.js?v=10"></script>
 
 <script>
   // ===== VÍDEO EMERGENTE EN "PROYECTO" =====
@@ -75,7 +120,7 @@
   let videoLoaded = false;
 
   if (titleWrap && videoBox) {
-    titleWrap.addEventListener('mouseenter', () => {
+    const loadPreview = () => {
       if (!videoLoaded) {
         const iframe = document.createElement('iframe');
         iframe.src = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&rel=0`;
@@ -87,7 +132,10 @@
         videoBox.appendChild(iframe);
         videoLoaded = true;
       }
-    });
+    };
+
+    titleWrap.addEventListener('mouseenter', loadPreview);
+    titleWrap.addEventListener('focus', loadPreview);
   }
 </script>
 
