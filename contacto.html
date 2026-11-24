@@ -76,42 +76,6 @@
     </form>
     <a href="index.html" class="back-home">← Volver al inicio</a>
 
-    <script>
-        const form = document.querySelector('form');
-        const status = document.querySelector('.form-status');
-        const button = form.querySelector('button');
-        const unconfirmedMessage = 'No hemos podido confirmar el envío. Es posible que el mensaje haya llegado. Espera unos minutos antes de repetirlo para evitar duplicados.';
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            if (button.disabled) return;
-            const data = new FormData(form);
-            button.disabled = true;
-            status.textContent = 'Enviando mensaje…';
-            const waitingNotice = window.setTimeout(() => {
-                status.textContent = 'El envío está tardando. Seguimos esperando confirmación; no vuelvas a enviarlo todavía.';
-            }, 15000);
-            try {
-                const response = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-                let result = null;
-                try {
-                    result = await response.json();
-                } catch {
-                    // Sin una respuesta válida no se puede confirmar el envío.
-                }
-                const confirmed = response.ok && (result?.success === true || result?.success === 'true');
-                if (confirmed) {
-                    status.textContent = '¡Gracias! El envío de tu mensaje ha sido confirmado.';
-                    form.reset();
-                } else {
-                    status.textContent = unconfirmedMessage;
-                }
-            } catch {
-                status.textContent = unconfirmedMessage;
-            } finally {
-                window.clearTimeout(waitingNotice);
-                button.disabled = false;
-            }
-        });
-    </script>
+    <script src="contacto.js?v=1" defer></script>
 </body>
 </html>
